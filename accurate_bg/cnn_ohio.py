@@ -141,6 +141,7 @@ def regressor(
 
 def test_ckpt(high_fid_data, outdir):
     tf.compat.v1.disable_eager_execution()
+    tf.compat.v1.reset_default_graph()
     sess = tf.compat.v1.Session()
     saver = tf.compat.v1.train.import_meta_graph(os.path.join(outdir, "pretrain.meta"))
     saver.restore(sess, tf.train.latest_checkpoint(outdir))
